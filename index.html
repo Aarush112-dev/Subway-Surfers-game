@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="An endless runner game in HTML5 Canvas.">
+    <title>Subway Surfers Clone</title>
+    <!-- Use Outfit font for a premium, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js for 3D graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- Head-Up Display (HUD) -->
+        <div id="hud" class="hidden ui-layer">
+            <div class="hud-top">
+                <div class="stat-box">
+                    <span class="label">SCORE</span>
+                    <span id="score-display">0</span>
+                </div>
+                <div class="stat-box coins-box">
+                    <div class="coin-icon"></div>
+                    <span id="coins-display">0</span>
+                </div>
+                <div class="stat-box" id="multiplier-box" style="display:none;">
+                    <span class="label">SPEED</span>
+                    <span id="multiplier-display">x1.0</span>
+                </div>
+            </div>
+            <!-- Inspector danger bar -->
+            <div id="danger-bar-container">
+                <span id="danger-label">👮 INSPECTOR</span>
+                <div id="danger-bar-track">
+                    <div id="danger-bar-fill"></div>
+                </div>
+            </div>
+            <button id="pause-btn" class="icon-btn" aria-label="Pause Game">
+                <div class="pause-bars"></div>
+            </button>
+            <div id="fps-counter" class="hidden">FPS: 0</div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="overlay active ui-layer">
+            <div class="glass-panel">
+                <h1 class="game-title">CITY<br><span class="highlight">SURF</span></h1>
+                <div class="high-score-display">HIGH SCORE: <span id="menu-high-score">0</span></div>
+                <div id="leaderboard-display" style="margin-top: 15px; font-size: 1.1rem; width: 100%;"></div>
+                <button id="play-btn" class="main-btn glow-effect">PLAY NOW</button>
+                <div class="instructions">
+                    <div class="inst-row"><span class="key">←</span> <span class="key">→</span> : MOVE</div>
+                    <div class="inst-row"><span class="key">↑</span> : JUMP</div>
+                    <div class="inst-row"><span class="key">↓</span> : SLIDE</div>
+                    <div class="inst-row">Mobile: Swipe to control</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pause Menu -->
+        <div id="pause-menu" class="overlay hidden ui-layer">
+            <div class="glass-panel">
+                <h1 class="paused-title">PAUSED</h1>
+                <button id="resume-btn" class="main-btn">RESUME</button>
+            </div>
+        </div>
+
+        <!-- Game Over Menu -->
+        <div id="game-over-menu" class="overlay hidden ui-layer">
+            <div class="glass-panel">
+                <h1 class="game-over-title">CRASHED!</h1>
+                <div class="stats-panel">
+                    <div class="stat-row">
+                        <span class="stat-label">SCORE</span>
+                        <span id="final-score" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">BEST</span>
+                        <span id="final-high-score" class="stat-value highlight">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">COINS</span>
+                        <span id="final-coins" class="stat-value coin-text">0</span>
+                    </div>
+                </div>
+                <button id="restart-btn" class="main-btn glow-effect">TRY AGAIN</button>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="bg-music" loop>
+        <!-- Creative Commons Public Domain Track from Wikimedia -->
+        <source src="https://upload.wikimedia.org/wikipedia/commons/9/91/Kevin_MacLeod_-_Cipher.ogg" type="audio/ogg">
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>
